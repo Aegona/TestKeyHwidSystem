@@ -4,17 +4,32 @@ local Data = {
 }
 
 if Data[_G.Key] and Data[_G.Key] == _G.hwid then
-    print("ยินดีต้อนรับ ครับ! ✅")
+if game:GetService("RbxAnalyticsService"):GetClientId() == _G.hwid then
+	    print("ยินดีต้อนรับ ครับ! ✅")
 	game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "AEGONA HUB", 
 	Text = "ยินดีต้อนรับ ครับ! ✅", 
 	Icon = "rbxassetid://1000000" 
 })
 else
-    warn("กรุณา ซื้อ Key ได้ที่เว็ปไซน์ AEGONASTORE.COM หรือ Reset Hwid 🚫 ")
 		game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "AEGONA HUB", 
-	Text = "กรุณา ซื้อ Key ได้ที่เว็ปไซน์ AEGONASTORE.COM หรือ Reset Hwid 🚫", 
+	Text = "Not Found HWID ~ หรือ Reset Hwid 🚫", 
+	Icon = "rbxassetid://1000000" 
+})
+end
+elseif not Data[_G.Key] then
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "AEGONA HUB", 
+	Text = "กรุณา ซื้อ Key ได้ที่เว็ปไซน์ AEGONASTORE.COM", 
+	Icon = "rbxassetid://1000000" 
+})
+
+else
+    warn("Error 🚫 ")
+		game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "AEGONA HUB", 
+	Text = "Wrong Hwid or Wrong Key🚫", 
 	Icon = "rbxassetid://1000000" 
 })
 end
